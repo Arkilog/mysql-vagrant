@@ -14,4 +14,4 @@ galaxy_info:
   - database:sql
   - development
 dependencies: 
-  - role: git+https://github.com/Arkilog/mysql.git,v1.0,Arkilog.mysql
+  - role: git+https://github.com/Arkilog/mysql.git,v1.0,yellowsnow.mysql
