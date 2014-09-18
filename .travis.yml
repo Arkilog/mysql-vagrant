@@ -11,6 +11,8 @@ install:
   - pip install ansible
   # Create inventory file
   - "printf '[localhost]\n127.0.0.1' > inventory"
+  # install dependent role
+  - ansible-galaxy install yellowsnow.mysql
 
 script:
   # Check the role/playbook's syntax.
