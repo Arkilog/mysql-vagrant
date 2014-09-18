@@ -1,22 +1,32 @@
-Role Name
+[![Build Status](https://travis-ci.org/Arkilog/mysql-vagrant.svg)](https://travis-ci.org/Arkilog/mysql-vagrant)
+
+Arkilog Ansible provisionner for MySQL on Vagrant VM 
 ========
 
-A brief description of the role goes here.
+Arkilog Ansible provisionner for MySQL on Vagrant VM.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by the ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+An ubuntu box.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The are the variables and their default definition :
+
+```YAML
+arkilog_mysql_datadir: '/vagrant_data/mysql/'
+arkilog_mysql_max_connections:'50'
+arkilog_mysql_key_buffer_size: '32M'
+arkilog_mysql_query_cache_size: '32M'
+arkilog_mysql_tmp_table_size: '16M'
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Arkilog.mysql
 
 License
 -------
@@ -26,4 +36,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+http://www.arkilog.ma/contact
