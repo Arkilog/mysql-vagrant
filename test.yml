@@ -1,0 +1,8 @@
+- hosts: localhost
+  vars_files:
+    - 'defaults/main.yml'
+  vars:
+    arkilog_mysql_login_user: root
+    arkilog_mysql_login_pwd: ''
+  tasks:
+    - include: 'tasks/main.yml'

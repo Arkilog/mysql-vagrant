@@ -1,0 +1,23 @@
+---
+- name: Ensure App armor is friendly with our mysqld (1/2)
+  sudo: yes
+  lineinfile: dest=/etc/apparmor.d/local/usr.sbin.mysqld line='{{ arkilog_mysql_datadir }} rw,' regexp='^{{ arkilog_mysql_datadir }} rw,' owner=root state=present insertafter=EOF create=True
+- name: Ensure App armor is friendly with our mysqld (2/2)
+  sudo: yes
+  lineinfile: dest=/etc/apparmor.d/local/usr.sbin.mysqld line='{{ arkilog_mysql_datadir }}** rwk,' regexp='^{{ arkilog_mysql_datadir }}\*\* rwk,' owner=root state=present insertafter=EOF create=True
+  notify: 
+    - restart apparmor
+    - stop mysql
+- name: Ensure MySQL data is copied
+  sudo: yes
+  shell: cp -R -p /var/lib/mysql {{ arkilog_mysql_datadir }}
+  args:
+    creates: '{{ arkilog_mysql_datadir }}/mysql'
+- name: Ensure MySQL conf dir is created
+  sudo: yes
+  file: path=/etc/mysql/conf.d state=directory
+  notify: stop mysql
+- name: Ensure MySQL is tweaked for dev mode
+  sudo: yes
+  template: src=devmode.cnf.j2 dest=/etc/mysql/conf.d/devmode.cnf
+  notify: start mysql

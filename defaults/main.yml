@@ -1,0 +1,7 @@
+---
+# defaults file for mysql-vagrant
+arkilog_mysql_datadir: '/vagrant_data/mysql/'
+arkilog_mysql_max_connections: '50'
+arkilog_mysql_key_buffer_size: '32M'
+arkilog_mysql_query_cache_size: '32M'
+arkilog_mysql_tmp_table_size: '16M'
